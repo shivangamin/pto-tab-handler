@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "PTO Sportsbook Tab Reuser",
+  "version": "1.2",
+  "description": "Reuses existing sportsbook tabs when clicking from PickTheOdds.app, preventing referrer data.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png"
+  },
+  "permissions": ["tabs", "storage"],
+  "host_permissions": [
+    "*://betway.ca/*",
+    "*://on.sportsbook.fanduel.ca/*",
+    "*://sports.on.betmgm.ca/*",
+    "*://www.on.betmgm.ca/*",
+    "*://sportsbook.draftkings.com/*",
+    "*://on.pointsbet.ca/*",
+    "*://on.bet99.ca/*",
+    "*://www.betano.ca/*",
+    "*://www.pinnacle.ca/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://picktheodds.app/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "32": "icons/icon32.png"
+    }
+  }
+}
